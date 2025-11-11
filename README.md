@@ -29,6 +29,9 @@ Each node monitors local temperature, communicates peer-to-peer using **ESP-NOW*
 3. Gateway receives and forwards data to MQTT broker.  
 4. Dashboard visualizes node data and alerts.
 
+   <img width="625" height="417" alt="image" src="https://github.com/user-attachments/assets/a59cfec7-1f52-45d3-911d-dcead2e79e37" />
+
+
 ---
 
 ## ⚙️ Features
