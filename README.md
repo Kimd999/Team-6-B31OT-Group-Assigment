@@ -1,69 +1,70 @@
-# B31OT-Group-Assigment
+<!-- filename: README.md -->
 
+# ESP-NOW Cooperative Greenhouse Monitoring System
 
-##  Overview
+A multi-node, energy-efficient IoT system using **ESP32**, **ESP-NOW**, **MQTT over TLS**, and a **Node-RED dashboard** to monitor greenhouse temperature and propagate cooperative alerts.
 
-The **Cooperative Thermal Alert Network (CTAN)** system is designed to detect abnormal temperature conditions and coordinate alerts between interconnected sensor nodes, representing by ESP32 MCU equipped with DHT11 sensors.
+## 1. Overview
 
-Each node monitors local temperature, communicates peer-to-peer using **ESP-NOW**, and shares data with a **gateway** connected to a **web dashboard** for real-time supervision.
+This project implements a **cooperative thermal alert network** with:
 
----
+- **Node 1** – ESP32 WROOM  
+  - DHT11 temperature sensor  
+  - NeoPixel RGB LED  
+  - ESP-NOW peer-to-peer + ESP-NOW → Gateway  
 
-##  System Architecture
+- **Node 2** – ESP32 WROOM  
+  - DHT11 temperature sensor  
+  - NeoPixel RGB LED  
+  - ESP-NOW peer-to-peer + ESP-NOW → Gateway  
 
-### Components
-- **ESP32 Sensor Nodes (x3+)**
-  - Equipped with a DHT11 temperature sensor
-  - RGB LED for visual alert indication
-  - Communicate using ESP-NOW
-- **ESP32 Gateway Node**
-  - Connects to nodes via ESP-NOW
-  - Publishes data and alerts to an MQTT broker
-  - Hosts or connects to a web-based dashboard
+- **Gateway** – ESP32-C3  
+  - Receives ESP-NOW packets from both nodes  
+  - Forwards data and alerts to **HiveMQ Cloud** via MQTT over TLS  
+  - Bridges local ESP-NOW network with the Internet  
 
-### Communication Flow
-1. Each node monitors temperature locally.  
-2. If a threshold is exceeded, the node:
-   - Activates local LED alert  
-   - Broadcasts an alert message to neighbors via ESP-NOW  
-3. Gateway receives and forwards data to MQTT broker.  
-4. Dashboard visualizes node data and alerts.
+- **Dashboard** – Node-RED  
+  - Subscribes to `greenhouse/#` MQTT topics  
+  - Shows real-time node readings and alerts  
 
-   <img width="625" height="417" alt="image" src="https://github.com/user-attachments/assets/a59cfec7-1f52-45d3-911d-dcead2e79e37" />
-
+The system was implemented as part of the **B31OT – IoT Group Assignment: Cooperative Thermal Alert Network (2025/26)**.
 
 ---
 
-##  Features
+## 2. Features
 
--  **Anomaly Detection** – Automatic detection of temperature beyond configurable limits.  
--  **Peer-to-Peer Coordination** – ESP-NOW-based alert propagation between nodes.  
--  **Energy Efficiency** – Duty cycling and message encoding to reduce power consumption.  
--  **Gateway Integration** – MQTT-based data forwarding for cloud or local dashboard visualization.  
--  **Web Dashboard** – Real-time monitoring of temperatures, alert states, and network topology.  
--  **Scalable & Extensible** – Easy node addition and flexible configuration options.
+- Cooperative **alert propagation** between Node1 and Node2  
+- Local **ESP-NOW** for low-latency, energy-efficient communication  
+- **MQTT over TLS** to HiveMQ Cloud (secure remote monitoring)  
+- **Node-RED dashboard** for visualization and supervision  
+- **Duty cycling + deep sleep** on sensor nodes to reduce energy usage  
+- **Simple redundant alert suppression** (rate-limiting propagation)  
+- Compact JSON payloads for cloud transmission
+
+---
+
+## 3. Hardware
+
+- 2 × ESP32 WROOM Dev Kit (Node1, Node2)  
+- 1 × ESP32-C3 Dev Kit (Gateway)  
+- 2 × DHT11 temperature sensors  
+- 2 × NeoPixel RGB LEDs (1 pixel each)  
+- USB cables (for power and programming)
+
+### Pin Mapping (Nodes)
+
+- DHT11 data → `GPIO4`  
+- NeoPixel data → `GPIO5`  
+
+> Power is provided via USB for demonstration, but the system is designed with battery operation in mind for energy-efficiency analysis.
 
 ---
 
-##  System Requirements
+## 4. MAC Address Configuration
 
-### Hardware
-- ESP32 microcontrollers (x4)
-- DHT11 temperature sensors (x3)
-- RGB NeoPixel LEDs
-- Power via USB (for demo) or battery
+These are the MAC addresses used in the code (and were replaced with the real board addresses during testing):
 
-### Software
-- Arduino IDE / PlatformIO
-- Required libraries:
-  - `WiFi.h`
-  - `esp_now.h`
-  - `PubSubClient.h`
-  - `DHT.h`
-  - `ArduinoJson.h`
-
-### Server
-- Mosquitto MQTT broker 
-- Node-RED 
-
----
+```c
+Gateway (ESP32-C3):   24:6F:28:AA:BB:01
+Node1  (ESP32 WROOM): 24:6F:28:AA:BB:02
+Node2  (ESP32 WROOM): 24:6F:28:AA:BB:03
