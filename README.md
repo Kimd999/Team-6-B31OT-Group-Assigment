@@ -1,6 +1,6 @@
 <!-- filename: README.md -->
 
-# ESP-NOW Cooperative Greenhouse Monitoring System
+# ESP-NOW Cooperative Greenhouse Monitoring System_Team 6
 
 A multi-node, energy-efficient IoT system using **ESP32**, **ESP-NOW**, **MQTT over TLS**, and a **Node-RED dashboard** to monitor greenhouse temperature and propagate cooperative alerts.
 
