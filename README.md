@@ -62,7 +62,7 @@ The system was implemented as part of the **B31OT – IoT Group Assignment: Coop
 
 ## 4. MAC Address Configuration
 
-These are the MAC addresses used in the code (and were replaced with the real board addresses during testing):
+These are the MAC addresses for reference purpose in the codes only (and were replaced with the real board addresses of ours during testing):
 
 ```c
 Gateway (ESP32-C3):   24:6F:28:AA:BB:01
