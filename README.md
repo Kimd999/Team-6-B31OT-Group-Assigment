@@ -4,7 +4,7 @@
 
 A multi-node, energy-efficient IoT system using **ESP32**, **ESP-NOW**, **MQTT over TLS**, and a **Node-RED dashboard** to monitor greenhouse temperature and propagate cooperative alerts.
 
-Team Members- Ananthapadmanabhan Manoj, Kwin Din Madiba, Spandana Meanlingi and Jahnavi Makharaju
+Team Members- Ananthapadmanabhan Manoj, Kwin-Isis Din Madiba, Spandana Meanlingi and Jahnavi Makaraju
 
 ## 1. Overview
 
