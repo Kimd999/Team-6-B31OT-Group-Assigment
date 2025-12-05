@@ -6,24 +6,32 @@ A multi-node, energy-efficient IoT system using **ESP32**, **ESP-NOW**, **MQTT o
 
 Team Members- Ananthapadmanabhan Manoj, Kwin-Isis Din Madiba, Spandana Meanlingi and Jahnavi Makaraju
 
-Refer IOT_Team6_Group_Project_Demonstration.mp4 video for the detailed explaination of our system
+Refer IOT_Team6_Group_Project_Demonstration.mp4 video for the detailed explaination of our system.
 
 ## 1. Overview
 
 This project implements a **cooperative thermal alert network** with:
 
-- **Node 1** – ESP32 WROOM  
-  - DHT11 temperature sensor  
-  - NeoPixel RGB LED  
-  - ESP-NOW peer-to-peer + ESP-NOW → Gateway  
-
+- **Node 1** – ESP32 WROOM (Sensor+ Gateway Intermediary)
+  - DHT11 temperature sensor 
+  - NeoPixel RGB LED
+  - Monitors temperature/humidity locally.  
+  - Sends data and alerts to Node 2 (peer-to-peer) via ESP-NOW.
+  - Implements Deep Sleep/Duty Cycling.
+  - Triggers local LED alert.
+  
 - **Node 2** – ESP32 WROOM  
   - DHT11 temperature sensor  
   - NeoPixel RGB LED  
-  - ESP-NOW peer-to-peer + ESP-NOW → Gateway  
-
+  - Receives alerts from Node 1 via ESP-NOW and changes its LED state cooperatively.
+  - Monitors temperature/humidity locally.
+  - Implements Deep Sleep/Duty Cycling.
+  - Triggers local LED alert.
+      
 - **Gateway** – ESP32-C3  
-  - Receives ESP-NOW packets from both nodes  
+  - Receives ESP-NOW packets from both nodes
+  - Handles Wi-Fi connection and MQTT communication
+  - Listens for ESP-NOW messages from Node 1.  
   - Forwards data and alerts to **HiveMQ Cloud** via MQTT over TLS  
   - Bridges local ESP-NOW network with the Internet  
 
