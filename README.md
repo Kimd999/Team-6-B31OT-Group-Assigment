@@ -40,6 +40,7 @@ This project implements a **cooperative thermal alert network** with:
   - Shows real-time node readings and alerts  
 
 The system was implemented as part of the **B31OT – IoT Group Assignment: Cooperative Thermal Alert Network**.
+We were unable to use 3 nodes+ gateway setup because one of our Esp32 kit was broken and not functioning properly. So, we used 2 nodes+ gateway setup to demonstrate the assignment requirements. This issue we faced was discussed with our Prof.Mauro during the demonstration and we successfully completed the assignment requirements with system architecture.
 
 ---
 
