@@ -5,7 +5,7 @@
 #include <Arduino.h> 
 #include <Adafruit_NeoPixel.h>
 
-#define FIXED_WIFI_CHANNEL 6
+#define FIXED_WIFI_CHANNEL 6 
 
 // MAC ADDRESS DEFINITIONS given here are for code reference purpose only; not our real ones.
 uint8_t GATEWAY_MAC_ADDR[6] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0x01};
