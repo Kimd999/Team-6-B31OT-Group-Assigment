@@ -169,7 +169,7 @@ void setup() {
   led.begin();
   led.show();
 
-  initESPNow();
+  initESPNow(); 
 }
 
 void loop() {
