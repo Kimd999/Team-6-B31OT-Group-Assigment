@@ -8,7 +8,7 @@ Team Members- Ananthapadmanabhan Manoj, Kwin-Isis Din Madiba, Spandana Meanlingi
 
 Refer IOT_Team6_Group_Project_Demonstration.mp4 video for the detailed explaination of our system.
 
-## 1. Overview
+## 1. Overview 
 
 This project implements a **cooperative thermal alert network** with:
 
